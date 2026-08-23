@@ -18,13 +18,13 @@ PORT=10000
 NODE_ENV=production
 JWT_SECRET=<long-random-secret>
 MONGODB_URI=<mongodb-atlas-connection-string>
-CLIENT_URL=https://<your-vercel-project>.vercel.app
+CLIENT_URL=https://sirhindi.vercel.app
 COOKIE_SAME_SITE=none
 ```
 
 Render supplies its own `PORT`; keeping `PORT=10000` is also valid for a standard Web Service.
 
-Verify the API at `https://<your-render-service>.onrender.com/api/health`.
+Verify the API at `https://sirhinditransaction-backend.onrender.com/api/health`.
 
 ## Vercel frontend
 
@@ -39,7 +39,7 @@ Import the same repository as a Vercel project with:
 Add this Vercel environment variable:
 
 ```text
-VITE_API_URL=https://<your-render-service>.onrender.com/api
+VITE_API_URL=https://sirhinditransaction-backend.onrender.com/api
 ```
 
 The `client/vercel.json` rewrite keeps React Router routes working after a browser refresh.
