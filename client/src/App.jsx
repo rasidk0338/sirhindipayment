@@ -18,8 +18,8 @@ function App() {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-hero-gradient text-white">
-        <div className="rounded-2xl border border-slate-700 bg-slate-900/60 p-4">
+      <div className="flex min-h-screen items-center justify-center bg-hero-gradient text-[#1F2937]">
+        <div className="rounded-2xl border border-[#F1E5EE] bg-white/80 p-4 shadow-sm backdrop-blur-sm">
           <BrandLogo className="h-20 w-48" />
         </div>
       </div>
@@ -50,7 +50,7 @@ function App() {
             <Route
               path="/settings"
               element={
-                <div className="glass-panel mx-auto max-w-xl rounded-[28px] p-8 text-center text-slate-200">
+                <div className="glass-panel mx-auto max-w-xl rounded-[28px] p-8 text-center text-[#1F2937]">
                   Settings coming soon.
                 </div>
               }
@@ -60,7 +60,7 @@ function App() {
         )}
       </Routes>
 
-      <ToastContainer position="top-right" autoClose={2500} theme="dark" />
+      <ToastContainer position="top-right" autoClose={2500} theme="light" />
     </>
   );
 }

@@ -149,11 +149,11 @@ export default function ClientDetail() {
   };
 
   if (loading) {
-    return <div className="p-6 text-slate-200">Loading client details...</div>;
+    return <div className="p-6 text-[#1F2937]">Loading client details...</div>;
   }
 
   if (!client) {
-    return <div className="p-6 text-slate-200">Client not found.</div>;
+    return <div className="p-6 text-[#1F2937]">Client not found.</div>;
   }
 
   return (
@@ -161,19 +161,19 @@ export default function ClientDetail() {
       <div className="glass-panel rounded-[28px] p-6">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="text-sm uppercase tracking-[0.24em] text-indigo-300">
+            <p className="text-sm uppercase tracking-[0.24em] text-[#FF8FB3]">
               Client profile
             </p>
-            <h1 className="mt-2 text-3xl font-bold text-white">
+            <h1 className="mt-2 text-3xl font-bold text-[#1F2937]">
               {client.name}
             </h1>
-            <p className="mt-2 text-slate-300">{client.mobile}</p>
+            <p className="mt-2 text-[#64748B]">{client.mobile}</p>
           </div>
           <div className="flex flex-wrap gap-3">
             <button
               type="button"
               onClick={downloadTransactionsPdf}
-              className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-600 px-5 py-3 text-sm font-semibold text-slate-100 hover:border-cyan-400 hover:text-cyan-300"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[#F1E5EE] bg-white px-5 py-3 text-sm font-semibold text-[#1F2937] hover:border-[#C9A7FF] hover:text-[#1F2937]"
               title="Download transaction history as PDF"
             >
               <FiDownload />
@@ -181,7 +181,7 @@ export default function ClientDetail() {
             </button>
             <Link
               to={`/transactions/new?clientId=${client._id}`}
-              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-indigo-500 to-cyan-500 px-5 py-3 text-sm font-semibold text-white"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#FF8FB3] to-[#C9A7FF] px-5 py-3 text-sm font-semibold text-white"
             >
               <FiPlus />
               Add Transaction
@@ -192,21 +192,21 @@ export default function ClientDetail() {
 
       <div className="grid gap-4 md:grid-cols-3">
         <div className="metric-card p-5">
-          <div className="text-sm text-slate-300">Total Credit</div>
-          <div className="mt-2 text-2xl font-bold text-emerald-400">
+          <div className="text-sm text-[#64748B]">Total Credit</div>
+          <div className="mt-2 text-2xl font-bold text-[#84CC16]">
             {currency(client.totalCredit || 0)}
           </div>
         </div>
         <div className="metric-card p-5">
-          <div className="text-sm text-slate-300">Total Debit</div>
-          <div className="mt-2 text-2xl font-bold text-rose-400">
+          <div className="text-sm text-[#64748B]">Total Debit</div>
+          <div className="mt-2 text-2xl font-bold text-[#F87171]">
             {currency(client.totalDebit || 0)}
           </div>
         </div>
         <div className="metric-card p-5">
-          <div className="text-sm text-slate-300">Current Balance</div>
+          <div className="text-sm text-[#64748B]">Current Balance</div>
           <div
-            className={`mt-2 text-2xl font-bold ${client.currentBalance >= 0 ? "text-emerald-400" : "text-rose-400"}`}
+            className={`mt-2 text-2xl font-bold ${client.currentBalance >= 0 ? "text-[#60A5FA]" : "text-[#F87171]"}`}
           >
             {currency(client.currentBalance || 0)}
           </div>
@@ -214,7 +214,7 @@ export default function ClientDetail() {
       </div>
 
       <div className="glass-panel rounded-[28px] p-5">
-        <h2 className="mb-5 text-xl font-semibold text-white">
+        <h2 className="mb-5 text-xl font-semibold text-[#1F2937]">
           Transaction history
         </h2>
         <div className="space-y-3">
@@ -222,25 +222,25 @@ export default function ClientDetail() {
             client.transactions.map((tx) => (
               <div
                 key={tx._id}
-                className="rounded-2xl border border-slate-700 bg-slate-950/50 p-4"
+                className="rounded-2xl border border-[#F1E5EE] bg-[#FFF7FB] p-4"
               >
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                   <div>
-                    <div className="font-medium text-white">
+                    <div className="font-medium text-[#1F2937]">
                       {tx.description}
                     </div>
-                    <div className="mt-1 text-xs text-slate-400">
+                    <div className="mt-1 text-xs text-[#64748B]">
                       {new Date(tx.transactionDate).toLocaleDateString()}
                     </div>
                   </div>
                   <div className="flex items-center gap-4 text-sm">
-                    <span className="text-emerald-400">
+                    <span className="text-[#84CC16]">
                       {tx.type === "Credit" ? currency(tx.amount) : "₹0"}
                     </span>
-                    <span className="text-rose-400">
+                    <span className="text-[#F87171]">
                       {tx.type === "Debit" ? currency(tx.amount) : "₹0"}
                     </span>
-                    <span className="font-medium text-slate-200">
+                    <span className="font-medium text-[#1F2937]">
                       {tx.type}
                     </span>
                   </div>
@@ -248,7 +248,7 @@ export default function ClientDetail() {
               </div>
             ))
           ) : (
-            <div className="rounded-2xl border border-dashed border-slate-600 bg-slate-950/40 p-8 text-center text-slate-400">
+            <div className="rounded-2xl border border-dashed border-[#F1E5EE] bg-[#FFF7FB] p-8 text-center text-[#64748B]">
               No transactions for this client yet.
             </div>
           )}

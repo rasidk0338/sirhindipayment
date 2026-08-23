@@ -24,9 +24,9 @@ export default function Layout() {
   const { user, logout } = useAuth();
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <div className="min-h-screen bg-[linear-gradient(135deg,#FFF9F0_0%,#FFD6E7_40%,#E8D6FF_100%)] text-[#1F2937]">
       <div className="mx-auto flex max-w-7xl gap-6 p-4 md:p-6">
-        <aside className="hidden w-72 shrink-0 rounded-[28px] border border-slate-700/60 bg-slate-900/70 p-5 shadow-soft lg:flex lg:flex-col">
+        <aside className="hidden w-72 shrink-0 rounded-[28px] border border-[#F1E5EE] bg-[linear-gradient(135deg,rgba(255,255,255,0.7),rgba(255,214,231,0.4),rgba(232,214,255,0.46))] p-5 shadow-[0_12px_32px_rgba(201,167,255,0.08)] lg:flex lg:flex-col">
           <div className="mb-8 flex items-center gap-3 px-2">
             <BrandLogo className="h-16 w-full" />
           </div>
@@ -39,8 +39,8 @@ export default function Layout() {
                 className={({ isActive }) =>
                   `flex items-center gap-3 rounded-2xl px-3 py-3 text-sm font-medium transition ${
                     isActive
-                      ? "bg-gradient-to-r from-indigo-500/20 to-cyan-500/20 text-white ring-1 ring-indigo-400/40"
-                      : "text-slate-300 hover:bg-slate-800/80 hover:text-white"
+                      ? "bg-gradient-to-r from-[#FF8FB3]/15 to-[#C9A7FF]/15 text-[#1F2937] ring-1 ring-[#FF8FB3]/25"
+                      : "text-[#64748B] hover:bg-[#FFF7FB] hover:text-[#1F2937]"
                   }`
                 }
               >
@@ -50,16 +50,16 @@ export default function Layout() {
             ))}
           </nav>
 
-          <div className="mt-auto rounded-2xl border border-indigo-500/20 bg-indigo-500/10 p-4">
-            <div className="text-xs uppercase tracking-[0.2em] text-slate-300">
+          <div className="mt-auto rounded-2xl border border-[#F1E5EE] bg-[#FFF7FB] p-4">
+            <div className="text-xs uppercase tracking-[0.2em] text-[#64748B]">
               Account
             </div>
-            <div className="mt-2 text-base font-medium text-white">
+            <div className="mt-2 text-base font-medium text-[#1F2937]">
               {user?.name || "User"}
             </div>
             <button
               onClick={logout}
-              className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl border border-slate-600 bg-slate-950/70 px-3 py-2 text-sm text-slate-100 transition hover:border-red-400 hover:text-red-300"
+              className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl border border-[#F1E5EE] bg-[linear-gradient(135deg,rgba(255,255,255,0.85),rgba(255,214,231,0.32),rgba(232,214,255,0.28))] px-3 py-2 text-sm text-[#1F2937] transition hover:border-[#F87171] hover:text-[#F87171]"
             >
               <FiLogOut />
               Logout
@@ -67,14 +67,14 @@ export default function Layout() {
           </div>
         </aside>
 
-        <main className="flex-1">
-          <div className="mb-4 flex items-center justify-between rounded-[24px] border border-slate-700/60 bg-slate-900/70 p-4 shadow-soft lg:hidden">
+        <main className="flex-1 rounded-[28px] border border-[#F1E5EE] bg-[linear-gradient(135deg,rgba(255,249,240,0.72),rgba(255,214,231,0.82),rgba(232,214,255,0.8))] p-3 shadow-[0_16px_40px_rgba(201,167,255,0.10)] md:p-5">
+          <div className="mb-4 flex items-center justify-between rounded-[24px] border border-[#F1E5EE] bg-[linear-gradient(135deg,rgba(255,255,255,0.75),rgba(255,214,231,0.42),rgba(232,214,255,0.38))] p-4 shadow-[0_12px_32px_rgba(201,167,255,0.08)] lg:hidden">
             <div className="flex items-center gap-3">
               <BrandLogo className="h-12 w-32" />
             </div>
             <button
               onClick={logout}
-              className="rounded-lg border border-slate-600 bg-slate-950/80 px-3 py-2 text-xs text-slate-200"
+              className="rounded-lg border border-[#F1E5EE] bg-[#FFF7FB] px-3 py-2 text-xs text-[#1F2937]"
             >
               Logout
             </button>
@@ -84,7 +84,7 @@ export default function Layout() {
         </main>
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 z-20 border-t border-slate-700/60 bg-slate-900/90 p-2 backdrop-blur md:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-20 border-t border-[#F1E5EE] bg-[linear-gradient(135deg,rgba(255,255,255,0.76),rgba(255,214,231,0.35),rgba(232,214,255,0.35))] p-2 backdrop-blur md:hidden">
         <div className="mx-auto flex max-w-md items-center justify-between gap-2">
           {navItems.slice(0, 4).map(({ label, to, icon: Icon }) => (
             <NavLink
@@ -92,7 +92,7 @@ export default function Layout() {
               to={to}
               className={({ isActive }) =>
                 `flex flex-1 flex-col items-center justify-center rounded-xl px-2 py-2 text-[10px] ${
-                  isActive ? "bg-indigo-500/20 text-white" : "text-slate-400"
+                  isActive ? "bg-[#FF8FB3]/15 text-[#1F2937]" : "text-[#64748B]"
                 }`
               }
             >

@@ -45,16 +45,16 @@ export default function TransactionsPage() {
     <div className="space-y-6 pb-24 lg:pb-6">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-sm uppercase tracking-[0.24em] text-indigo-300">
+          <p className="text-sm uppercase tracking-[0.24em] text-[#FF8FB3]">
             Ledger
           </p>
-          <h1 className="mt-2 text-3xl font-bold text-white">
+          <h1 className="mt-2 text-3xl font-bold text-[#1F2937]">
             Transaction history
           </h1>
         </div>
         <Link
           to="/transactions/new"
-          className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-indigo-500 to-cyan-500 px-4 py-2.5 text-sm font-semibold text-white"
+          className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-[#FF8FB3] to-[#C9A7FF] px-4 py-2.5 text-sm font-semibold text-white"
         >
           <FiPlus />
           Add Transaction
@@ -67,18 +67,18 @@ export default function TransactionsPage() {
             {[...Array(4)].map((_, idx) => (
               <div
                 key={idx}
-                className="h-12 animate-pulse rounded-xl bg-slate-800/80"
+                className="h-12 animate-pulse rounded-xl bg-[#FDF2F8]"
               />
             ))}
           </div>
         ) : transactions.length === 0 ? (
-          <div className="py-16 text-center text-slate-300">
+          <div className="py-16 text-center text-[#64748B]">
             No transactions yet.
           </div>
         ) : (
           <table className="min-w-full text-left text-sm">
             <thead>
-              <tr className="border-b border-slate-700 text-slate-300">
+              <tr className="border-b border-[#F1E5EE] text-[#64748B]">
                 <th className="px-4 py-3">Client</th>
                 <th className="px-4 py-3">Date</th>
                 <th className="px-4 py-3">Description</th>
@@ -91,7 +91,7 @@ export default function TransactionsPage() {
               {transactions.map((item) => (
                 <tr
                   key={item._id}
-                  className="border-b border-slate-800 text-slate-100"
+                  className="border-b border-[#F1E5EE] text-[#1F2937]"
                 >
                   <td className="px-4 py-3">
                     {item.clientId?.name || "Client"}
@@ -101,7 +101,7 @@ export default function TransactionsPage() {
                   </td>
                   <td className="px-4 py-3">{item.description}</td>
                   <td
-                    className={`px-4 py-3 font-medium ${item.type === "Credit" ? "text-emerald-400" : "text-rose-400"}`}
+                    className={`px-4 py-3 font-medium ${item.type === "Credit" ? "text-[#84CC16]" : "text-[#F87171]"}`}
                   >
                     {item.type}
                   </td>
@@ -110,13 +110,13 @@ export default function TransactionsPage() {
                     <div className="flex items-center gap-2">
                       <Link
                         to={`/transactions/${item._id}/edit`}
-                        className="rounded-lg border border-slate-600 p-2 text-slate-200 hover:border-indigo-400 hover:text-indigo-300"
+                        className="rounded-lg border border-[#F1E5EE] bg-white p-2 text-[#1F2937] hover:border-[#FF8FB3] hover:text-[#FF8FB3]"
                       >
                         <FiEdit2 />
                       </Link>
                       <button
                         onClick={() => removeTransaction(item._id)}
-                        className="rounded-lg border border-slate-600 p-2 text-slate-200 hover:border-red-400 hover:text-red-300"
+                        className="rounded-lg border border-[#F1E5EE] bg-white p-2 text-[#1F2937] hover:border-[#F87171] hover:text-[#F87171]"
                       >
                         <FiTrash2 />
                       </button>

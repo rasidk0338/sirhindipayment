@@ -68,15 +68,15 @@ export default function ClientsPage() {
     <div className="space-y-6 pb-24 lg:pb-6">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-sm uppercase tracking-[0.24em] text-indigo-300">
+          <p className="text-sm uppercase tracking-[0.24em] text-[#FF8FB3]">
             Customers
           </p>
-          <h1 className="mt-2 text-3xl font-bold text-white">
+          <h1 className="mt-2 text-3xl font-bold text-[#1F2937]">
             Client directory
           </h1>
         </div>
-        <div className="rounded-2xl border border-slate-700 bg-slate-900/70 px-4 py-2 text-sm text-slate-200">
-          <span className="mr-2 inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+        <div className="rounded-2xl border border-[#F1E5EE] bg-white px-4 py-2 text-sm text-[#1F2937]">
+          <span className="mr-2 inline-flex h-2 w-2 rounded-full bg-[#84CC16]" />
           {clients.length} total clients
         </div>
       </div>
@@ -84,11 +84,11 @@ export default function ClientsPage() {
       <div className="glass-panel overflow-hidden rounded-[28px] p-4">
         <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div className="relative w-full md:max-w-md">
-            <FiSearch className="pointer-events-none absolute left-3 top-3 text-slate-400" />
+            <FiSearch className="pointer-events-none absolute left-3 top-3 text-[#64748B]" />
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full rounded-xl border border-slate-700 bg-slate-950/60 py-2.5 pl-9 pr-3 text-sm text-white outline-none focus:border-indigo-400"
+              className="w-full rounded-xl border border-[#F1E5EE] bg-[#FFF7FB] py-2.5 pl-9 pr-3 text-sm text-[#1F2937] outline-none focus:border-[#FF8FB3]"
               placeholder="Search by name or mobile"
             />
           </div>
@@ -100,8 +100,8 @@ export default function ClientsPage() {
                 onClick={() => setFilter(option.value)}
                 className={`rounded-xl px-3 py-2 text-xs font-medium transition ${
                   filter === option.value
-                    ? "bg-indigo-500 text-white"
-                    : "border border-slate-600 bg-slate-950/70 text-slate-300 hover:border-indigo-400"
+                    ? "bg-gradient-to-r from-[#FF8FB3] to-[#C9A7FF] text-white"
+                    : "border border-[#F1E5EE] bg-white text-[#64748B] hover:border-[#FF8FB3]"
                 }`}
               >
                 {option.label}
@@ -115,19 +115,19 @@ export default function ClientsPage() {
             {[...Array(4)].map((_, idx) => (
               <div
                 key={idx}
-                className="h-14 animate-pulse rounded-xl bg-slate-800/80"
+                className="h-14 animate-pulse rounded-xl bg-[#FDF2F8]"
               />
             ))}
           </div>
         ) : filteredClients.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
-            <div className="mb-4 rounded-full bg-indigo-500/10 p-4 text-indigo-300">
+            <div className="mb-4 rounded-full bg-[#FF8FB3]/10 p-4 text-[#FF8FB3]">
               <FiUsers className="text-3xl" />
             </div>
-            <h2 className="text-2xl font-semibold text-white">
+            <h2 className="text-2xl font-semibold text-[#1F2937]">
               No clients yet
             </h2>
-            <p className="mt-2 max-w-md text-slate-400">
+            <p className="mt-2 max-w-md text-[#64748B]">
               Start managing your ledger by adding your first client
               transaction.
             </p>
@@ -136,7 +136,7 @@ export default function ClientsPage() {
           <div className="table-scroll overflow-x-auto">
             <table className="min-w-full text-left text-sm">
               <thead>
-                <tr className="border-b border-slate-700 bg-slate-950/60 text-slate-300">
+                <tr className="border-b border-[#F1E5EE] bg-[#FFF7FB] text-[#64748B]">
                   <th className="px-5 py-4">Name</th>
                   <th className="px-5 py-4">Mobile</th>
                   <th className="px-5 py-4">Credit</th>
@@ -149,18 +149,18 @@ export default function ClientsPage() {
                 {filteredClients.map((client) => (
                   <tr
                     key={client._id}
-                    className="border-b border-slate-800 text-slate-100"
+                    className="border-b border-[#F1E5EE] text-[#1F2937]"
                   >
                     <td className="px-5 py-4 font-medium">{client.name}</td>
                     <td className="px-5 py-4">{client.mobile}</td>
-                    <td className="px-5 py-4 text-emerald-400">
+                    <td className="px-5 py-4 text-[#84CC16]">
                       {currency(client.totalCredit || 0)}
                     </td>
-                    <td className="px-5 py-4 text-rose-400">
+                    <td className="px-5 py-4 text-[#F87171]">
                       {currency(client.totalDebit || 0)}
                     </td>
                     <td
-                      className={`px-5 py-4 font-semibold ${client.currentBalance >= 0 ? "text-emerald-400" : "text-rose-400"}`}
+                      className={`px-5 py-4 font-semibold ${client.currentBalance >= 0 ? "text-[#84CC16]" : "text-[#F87171]"}`}
                     >
                       {currency(client.currentBalance || 0)}
                     </td>
@@ -168,19 +168,19 @@ export default function ClientsPage() {
                       <div className="flex items-center gap-2">
                         <Link
                           to={`/clients/${client._id}`}
-                          className="rounded-lg border border-slate-600 p-2 text-slate-200 hover:border-indigo-400 hover:text-indigo-300"
+                          className="rounded-lg border border-[#F1E5EE] bg-white p-2 text-[#1F2937] hover:border-[#FF8FB3] hover:text-[#FF8FB3]"
                         >
                           <FiEye />
                         </Link>
                         <Link
                           to={`/clients/${client._id}/edit`}
-                          className="rounded-lg border border-slate-600 p-2 text-slate-200 hover:border-indigo-400 hover:text-indigo-300"
+                          className="rounded-lg border border-[#F1E5EE] bg-white p-2 text-[#1F2937] hover:border-[#FF8FB3] hover:text-[#FF8FB3]"
                         >
                           <FiEdit2 />
                         </Link>
                         <button
                           onClick={() => removeClient(client._id)}
-                          className="rounded-lg border border-slate-600 p-2 text-slate-200 hover:border-red-400 hover:text-red-300"
+                          className="rounded-lg border border-[#F1E5EE] bg-white p-2 text-[#1F2937] hover:border-[#F87171] hover:text-[#F87171]"
                         >
                           <FiTrash2 />
                         </button>

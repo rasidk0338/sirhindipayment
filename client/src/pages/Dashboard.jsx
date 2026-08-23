@@ -23,25 +23,25 @@ const summaryConfig = [
     label: "Total Clients",
     key: "totalClients",
     icon: FiUsers,
-    tone: "from-indigo-500 to-blue-500",
+    tone: "from-[#FF8FB3] to-[#C9A7FF]",
   },
   {
     label: "Total Credit",
     key: "totalCredit",
     icon: FiTrendingUp,
-    tone: "from-emerald-500 to-green-500",
+    tone: "from-[#84CC16] to-[#A3E635]",
   },
   {
     label: "Total Debit",
     key: "totalDebit",
     icon: FiTrendingDown,
-    tone: "from-rose-500 to-red-500",
+    tone: "from-[#F87171] to-[#FCA5A5]",
   },
   {
     label: "Net Balance",
     key: "netBalance",
     icon: FiDollarSign,
-    tone: "from-cyan-500 to-indigo-500",
+    tone: "from-[#60A5FA] to-[#93C5FD]",
   },
 ];
 
@@ -106,16 +106,16 @@ export default function Dashboard() {
     <div className="space-y-6 pb-24 lg:pb-6">
       <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div>
-          <p className="text-sm uppercase tracking-[0.24em] text-indigo-300">
+          <p className="text-sm uppercase tracking-[0.24em] text-[#FF8FB3]">
             Overview
           </p>
-          <h1 className="mt-2 text-3xl font-bold text-white md:text-4xl">
+          <h1 className="mt-2 text-3xl font-bold text-[#1F2937] md:text-4xl">
             Financial dashboard
           </h1>
         </div>
         <Link
           to="/transactions/new"
-          className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-indigo-500 to-cyan-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25"
+          className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#FF8FB3] to-[#C9A7FF] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#C9A7FF]/20"
         >
           <FiPlus />
           Add Transaction
@@ -127,8 +127,8 @@ export default function Dashboard() {
           <div key={key} className="metric-card p-5">
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-sm text-slate-300">{label}</p>
-                <p className="mt-3 text-2xl font-bold text-white">
+                <p className="text-sm text-[#64748B]">{label}</p>
+                <p className="mt-3 text-2xl font-bold text-[#1F2937]">
                   {key.includes("Total") || key === "transactionsCount"
                     ? currency(stats[key])
                     : stats[key]}
@@ -146,14 +146,14 @@ export default function Dashboard() {
 
       <div className="glass-panel rounded-[28px] p-5">
         <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-          <h2 className="text-xl font-semibold text-white">Clients</h2>
+          <h2 className="text-xl font-semibold text-[#1F2937]">Clients</h2>
           <div className="flex w-full flex-col gap-3 md:max-w-xl md:flex-row md:items-center">
             <div className="relative w-full md:flex-1">
-              <FiSearch className="pointer-events-none absolute left-3 top-3 text-slate-400" />
+              <FiSearch className="pointer-events-none absolute left-3 top-3 text-[#64748B]" />
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full rounded-xl border border-slate-700 bg-slate-950/60 py-2.5 pl-9 pr-3 text-sm text-white outline-none focus:border-indigo-400"
+                className="w-full rounded-xl border border-[#F1E5EE] bg-[#FFF7FB] py-2.5 pl-9 pr-3 text-sm text-[#1F2937] outline-none focus:border-[#FF8FB3]"
                 placeholder="Search by name or mobile"
               />
             </div>
@@ -165,8 +165,8 @@ export default function Dashboard() {
                   onClick={() => setFilter(option.value)}
                   className={`rounded-xl px-3 py-2 text-xs font-medium transition ${
                     filter === option.value
-                      ? "bg-indigo-500 text-white"
-                      : "border border-slate-600 bg-slate-950/70 text-slate-300 hover:border-indigo-400"
+                      ? "bg-gradient-to-r from-[#FF8FB3] to-[#C9A7FF] text-white"
+                      : "border border-[#F1E5EE] bg-[linear-gradient(135deg,rgba(255,255,255,0.8),rgba(255,214,231,0.26),rgba(232,214,255,0.28))] text-[#64748B] hover:border-[#FF8FB3]"
                   }`}
                 >
                   {option.label}
@@ -182,16 +182,16 @@ export default function Dashboard() {
               {[...Array(4)].map((_, idx) => (
                 <div
                   key={idx}
-                  className="h-16 animate-pulse rounded-2xl bg-slate-800/80"
+                  className="h-16 animate-pulse rounded-2xl bg-[#FDF2F8]"
                 />
               ))}
             </div>
           ) : filteredClients.length === 0 ? (
-            <div className="rounded-2xl border border-dashed border-slate-600 bg-slate-950/50 px-6 py-12 text-center">
-              <div className="text-lg font-medium text-white">
+            <div className="rounded-2xl border border-dashed border-[#F1E5EE] bg-[linear-gradient(135deg,rgba(255,255,255,0.5),rgba(255,214,231,0.18),rgba(232,214,255,0.2))] px-6 py-12 text-center">
+              <div className="text-lg font-medium text-[#1F2937]">
                 No clients found
               </div>
-              <p className="mt-2 text-sm text-slate-400">
+              <p className="mt-2 text-sm text-[#64748B]">
                 Start managing your ledger by adding your first client
                 transaction.
               </p>
@@ -201,21 +201,23 @@ export default function Dashboard() {
               <Link
                 key={client._id}
                 to={`/clients/${client._id}`}
-                className="flex items-center justify-between rounded-2xl border border-slate-700 bg-slate-950/50 p-4 transition hover:border-indigo-500/60 hover:bg-slate-900"
+                className="flex items-center justify-between rounded-2xl border border-[#F1E5EE] bg-[linear-gradient(135deg,rgba(255,255,255,0.42),rgba(255,214,231,0.18),rgba(232,214,255,0.2))] p-4 transition hover:border-[#FF8FB3]/60 hover:bg-[linear-gradient(135deg,rgba(255,255,255,0.58),rgba(255,214,231,0.22),rgba(232,214,255,0.24))]"
               >
                 <div>
-                  <div className="font-medium text-white">{client.name}</div>
-                  <div className="mt-1 text-sm text-slate-400">
+                  <div className="font-medium text-[#1F2937]">
+                    {client.name}
+                  </div>
+                  <div className="mt-1 text-sm text-[#64748B]">
                     {client.mobile}
                   </div>
                 </div>
                 <div className="text-right">
                   <div
-                    className={`font-semibold ${client.currentBalance >= 0 ? "text-emerald-400" : "text-rose-400"}`}
+                    className={`font-semibold ${client.currentBalance >= 0 ? "text-[#84CC16]" : "text-[#F87171]"}`}
                   >
                     {currency(client.currentBalance)}
                   </div>
-                  <div className="mt-1 inline-flex items-center gap-1 text-xs text-slate-300">
+                  <div className="mt-1 inline-flex items-center gap-1 text-xs text-[#64748B]">
                     <FiArrowUpRight />
                     {client.currentBalance >= 0
                       ? "Credit Balance"
