@@ -12,6 +12,9 @@ export const AuthProvider = ({ children }) => {
       const { data } = await api.get("/auth/me");
       setUser(data);
     } catch (error) {
+      if (error.response?.status === 401) {
+        window.localStorage.removeItem("sirhindi_token");
+      }
       setUser(null);
     } finally {
       setLoading(false);
@@ -24,19 +27,25 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (payload) => {
     const { data } = await api.post("/auth/login", payload);
+    window.localStorage.setItem("sirhindi_token", data.token);
     setUser(data);
     return data;
   };
 
   const register = async (payload) => {
     const { data } = await api.post("/auth/register", payload);
+    window.localStorage.setItem("sirhindi_token", data.token);
     setUser(data);
     return data;
   };
 
   const logout = async () => {
-    await api.post("/auth/logout");
-    setUser(null);
+    try {
+      await api.post("/auth/logout");
+    } finally {
+      window.localStorage.removeItem("sirhindi_token");
+      setUser(null);
+    }
   };
 
   const value = useMemo(
