@@ -25,7 +25,7 @@ export default function Layout() {
 
   return (
     <div className="min-h-screen bg-[linear-gradient(135deg,#FFF9F0_0%,#FFD6E7_40%,#E8D6FF_100%)] text-[#1F2937]">
-      <div className="mx-auto flex max-w-7xl gap-6 p-4 md:p-6">
+      <div className="mx-auto flex w-full max-w-7xl gap-4 p-3 sm:p-4 md:gap-6 md:p-6">
         <aside className="hidden w-72 shrink-0 rounded-[28px] border border-[#F1E5EE] bg-[linear-gradient(135deg,rgba(255,255,255,0.7),rgba(255,214,231,0.4),rgba(232,214,255,0.46))] p-5 shadow-[0_12px_32px_rgba(201,167,255,0.08)] lg:flex lg:flex-col">
           <div className="mb-8 flex items-center gap-3 px-2">
             <BrandLogo className="h-16 w-full" />
@@ -67,7 +67,7 @@ export default function Layout() {
           </div>
         </aside>
 
-        <main className="flex-1 rounded-[28px] border border-[#F1E5EE] bg-[linear-gradient(135deg,rgba(255,249,240,0.72),rgba(255,214,231,0.82),rgba(232,214,255,0.8))] p-3 shadow-[0_16px_40px_rgba(201,167,255,0.10)] md:p-5">
+        <main className="min-w-0 flex-1 rounded-[28px] border border-[#F1E5EE] bg-[linear-gradient(135deg,rgba(255,249,240,0.72),rgba(255,214,231,0.82),rgba(232,214,255,0.8))] p-3 shadow-[0_16px_40px_rgba(201,167,255,0.10)] md:p-5">
           <div className="mb-4 flex items-center justify-between rounded-[24px] border border-[#F1E5EE] bg-[linear-gradient(135deg,rgba(255,255,255,0.75),rgba(255,214,231,0.42),rgba(232,214,255,0.38))] p-4 shadow-[0_12px_32px_rgba(201,167,255,0.08)] lg:hidden">
             <div className="flex items-center gap-3">
               <BrandLogo className="h-12 w-32" />
@@ -84,8 +84,8 @@ export default function Layout() {
         </main>
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 z-20 border-t border-[#F1E5EE] bg-[linear-gradient(135deg,rgba(255,255,255,0.76),rgba(255,214,231,0.35),rgba(232,214,255,0.35))] p-2 backdrop-blur md:hidden">
-        <div className="mx-auto flex max-w-md items-center justify-between gap-2">
+      <div className="fixed inset-x-0 bottom-0 z-20 border-t border-[#F1E5EE] bg-[linear-gradient(135deg,rgba(255,255,255,0.76),rgba(255,214,231,0.35),rgba(232,214,255,0.35))] p-2 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] backdrop-blur md:hidden">
+        <div className="mx-auto flex max-w-md items-center justify-between gap-1 sm:gap-2">
           {navItems.slice(0, 4).map(({ label, to, icon: Icon }) => (
             <NavLink
               key={to}

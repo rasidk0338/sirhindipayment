@@ -41,6 +41,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
   background: linear-gradient(180deg, #FFF9F0 0%, #FFF5FA 100%);
   color: var(--text-main);
 }
@@ -58,6 +59,7 @@ textarea {
 
 #root {
   min-height: 100vh;
+  width: 100%;
   background: transparent;
 }
 
